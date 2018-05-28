@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Title: Matrix SVD
+Implementation-Version: 1.0
+Main-Class: svd.MatrixSVD
+

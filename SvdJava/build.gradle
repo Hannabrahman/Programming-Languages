@@ -14,9 +14,9 @@ repositories {
 
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'MatrixSVD',
+        attributes 'Implementation-Title': 'Matrix SVD',
                 'Implementation-Version': version,
-                'Main-Class': 'MatrixSVD'
+                'Main-Class': 'svd.MatrixSVD'
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
