@@ -24,6 +24,19 @@ gradle test
 
 - You can open test report under build/reports/tests/test/index.html in a brower
 
+## C++ implementation in SVDcpp/
+
+1. Compile SDV.cpp program and then RUN the executable file which will read an input Matrix A from INPUT FILE and generate decompose matrices S and V and save it in OUTPUT FILE.
+
+```
+g++ SVD.cpp -o <executable_file_name>
+./<executable_file_name> <INPUT FILE> <OUTPUT DIRECTORY>
+```
+- INPUT FILE: path to input matrix, example input as in data/matrix_cpp.input. Note that Matrix dimensions needs to be specified in the first line as in example.
+
+- OUTPUT DIRECTORY: directory path of output files. The program yields two files, matrix\_javacpp\_S.output, matrix\_cppsvd\_V.output, matrix\_javasvd\_v.output which saves Singular Values (S) and right singular vector (V), respectively.
+
+
 ## Resources:
 
 http://svn.lirec.eu/libs/magicsquares/

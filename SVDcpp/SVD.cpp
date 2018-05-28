@@ -29,6 +29,7 @@
 #include <list>
 #include "SVD.h"
 #include <fstream>      // std::ifstream
+#include <string>
 
 
 using namespace std;
@@ -328,10 +329,16 @@ int dsvd(Matrix<float> &a, int m, int n, float *w, Matrix<float> &v)
     return(1);
 }
 
-int main (int argc, char *argv[]) {
+int main (int argc, char **argv) {
+        if (argc < 3){
+		cout<<"SVD needs three input arguments"<<endl;
+		return 0;
+	}
 	int m;
 	int n;
-	ifstream f("../data/matrix_cpp.input");
+
+	// read input matrix
+	ifstream f(argv[1]);
 	f >> m >> n;
         Matrix<float> A(m,n);
 	for (int i = 0; i < m; i++)
@@ -344,8 +351,14 @@ int main (int argc, char *argv[]) {
 	dsvd(A, A.GetRows(), A.GetCols(), w.GetRawData(), v);
 	A.SortCols(w);
 
-  ofstream f1("../data/matrix_cppsvd_v.output");
-  ofstream f2("../data/matrix_cppsvd_s.output");
+  // write V and S to output file
+	std::string v_out = argv[2];
+	v_out += "/matrix_cppsvd_V.output";
+  ofstream f1(v_out.c_str());
+
+	std::string s_out = argv[2];
+	s_out += "/matrix_cppsvd_S.output";
+  ofstream f2(s_out.c_str());
 
   for (int i = 0; i < m; i++)
    {
