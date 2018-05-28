@@ -59,6 +59,8 @@
 #include <algorithm>
 #include <list>
 #include "SVD.h"
+#include <fstream>      // std::ifstream
+
 
 using namespace std;
 
@@ -358,13 +360,27 @@ int dsvd(Matrix<float> &a, int m, int n, float *w, Matrix<float> &v)
 }
 
 int main (int argc, char *argv[]) {
-    Matrix<float> m(2,2);
+    //Matrix<float> m(2,2);
     //FILE * pFile;
     //pFile = fopen("input", "r");
     //if (pFile != NULL) {
     //    m.Load(pFile);
     //}
     //fclose (pFile);
+	int r;
+	int c;
+	ifstream f("input");
+	f >> r >> c;
+        Matrix<float> m(r,c);
+	for (int i = 0; i < r; i++)
+	for (int j = 0; j < c; j++)
+		
+  	f >> m[i][j];
+	
+    //m[0][0] = 1;
+    //m[0][1] = -2;
+    //m[1][0] = 5;
+    //m[1][1] = 1;
     Vector<float> w(m.GetRows());
 	Matrix<float> v(m.GetRows(),m.GetCols());
 	dsvd(m, m.GetRows(), m.GetCols(), w.GetRawData(), v);
