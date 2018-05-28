@@ -1,0 +1,29 @@
+group 'svd'
+
+apply plugin: 'java'
+apply plugin: 'application'
+defaultTasks 'fatJar'
+
+version = '1.0'
+sourceCompatibility = 1.8
+mainClassName = 'MatrixSVD'
+
+repositories {
+    mavenCentral()
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'MatrixSVD',
+                'Implementation-Version': version,
+                'Main-Class': 'MatrixSVD'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
