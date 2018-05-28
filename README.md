@@ -9,7 +9,7 @@ java -jar build/libs/svd-all-1.0.jar <INPUT FILE> <OUTPUT DIRECTORY>
 ```
 - INPUT FILE: path to input matrix, example input as in data/matrix.input. Note the program can calculate the dimension of the input matrix itself.
 
-- OUTPUT DIRECTORY: directory path of output files. The program yields three files, matrix\_javasvd\_s.output, matrix\_javasvd\_u.output, matrix\_javasvd\_v.output which saves S, U, V matrices of input matrix respectively. 
+- OUTPUT DIRECTORY: directory path of output files. The program yields three files, matrix\_javasvd\_s.output, matrix\_javasvd\_u.output, matrix\_javasvd\_v.output which save decomposed S, U, V matrices of input matrix respectively. 
 
 2. Re-build application
 ```
