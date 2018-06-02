@@ -26,10 +26,10 @@ gradle test
 
 ## C++ implementation in SVDcpp/
 
-1. Compile SDV.cpp program and then RUN the executable file which will read an input Matrix A from INPUT FILE and generate decompose matrices S and V and save it in OUTPUT FILE.
+1. Compile SDV.cpp program and then RUN the executable file which will read an input Matrix A from INPUT FILE and generate decompose matrices V, U and S and save it in OUTPUT FILE. ( A = U * S * V')
 
 ```
-g++ SVD.cpp -o <executable_file_name>
+g++ runSVD.cpp SingularValueDecomposition.cpp -o <executable_file_name>
 ./<executable_file_name> <INPUT FILE> <OUTPUT DIRECTORY>
 ```
 - INPUT FILE: path to input matrix, example input as in data/matrix_cpp.input. Note that Matrix dimensions needs to be specified in the first line as in example.
