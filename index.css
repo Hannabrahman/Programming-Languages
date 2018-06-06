@@ -2,49 +2,9 @@ p.center-align{
     margin-left: 40px;
 }
 
-div.info{
-    position: relative;
-    height: 200px;
-    width: 1800px;
-    padding: 10px;
-    margin: 10px;}
-div.submits{
-    background-color: hsl(0, 0%, 94%);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    padding-left: 10px;
-    border: 1px solid hsl(0, 0%, 71%);
-    border-color: hsl(0, 0%, 94%);
-}
-div.sources{
-    background-color: hsl(0, 0%, 94%);
-    position: absolute;
-    top: 0;
-    left: 200px;
-    width: 300px;
-    height: 200px;
-    padding-left: 5px;
-    border: 1px solid hsl(0, 0%, 71%);
-    border-color: hsl(0, 0%, 94%);
-   
-}
-div.codes{
-    background-color: hsl(0, 0%, 94%);
-    position: absolute;
-    top: 0;
-    left: 450px;
-    width: 300px;
-    height: 200px;
-    padding-left: 10px;
-    border: 1px solid hsl(0, 0%, 71%);
-    border-color: hsl(0, 0%, 94%);
-}
 div.Ref{
     background-color: hsl(0, 0%, 94%);
-    position: absolute;
+    position: relative;
     top: 0;
     left: 750px;
     width: 300px;
