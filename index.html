@@ -36,12 +36,82 @@
 <button onclick="myFunction()">Try it</button>
 -->
 
+ <pre id="contents"></pre>     
 <script>
+
 function myFunction() {
     var x = document.getElementById("myFile");
     x.disabled = true;
-    console.log(x);
+//    var selectedFile = document.getElementById('myFile').files[0];
+    return x
+    
 }
+    
+    document
+    .getElementById('myFile')
+    .addEventListener(
+        'change',
+        function () {
+            var fr = new FileReader();
+            fr.onload = function () {
+                document.getElementById('contents').textContent = this.result;
+            };
+            fr.readAsText(this.files[0]);
+        }
+    );
+      
+    //console.log(myFunction());
+    
+    /// read from a path
+//    var fso = new ActiveXObject("Scripting.FileSystemObject");
+//    var fh = fso.OpenTextFile("C:/Users/Faeze/OneDrive/Spring\ 2018/CMPS\ 203\ (Programming Languages)/cmps203_project/data/matrix.input", 1, false, 0);
+//    var output = fh.ReadAll();
+    
+    
+//    var reader = new FileReader();
+//reader.onload = function(event) {
+//    var contents = event.target.result;
+//    console.log("File contents: " + contents);
+//};
+//
+//reader.onerror = function(event) {
+//    console.error("File could not be read! Code " + event.target.error.code);
+//};
+//
+//reader.readAsText("C:/test.txt");
+    
+//function readTextFile(filepath) {
+//	var str = "";
+//	var txtFile = new File([""],filepath);
+//	txtFile.open("r");
+//	while (!txtFile.eof) {
+//		// read each line of text
+//		str += txtFile.readln() + "\n";
+//	}
+//	return str;
+//}
+//    console.log(readTextFile("C:/test.txt"))
+    
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    //rawFile.send(null);
+}
+    
+    readTextFile("C:/test.txt");
 </script>
 
     
