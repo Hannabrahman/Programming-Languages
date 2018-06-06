@@ -225,8 +225,17 @@ public class Matrix {
             vD.addElement(Double.valueOf(tokenizer.sval)); // Read & store 1st row.
         } while (tokenizer.nextToken() == StreamTokenizer.TT_WORD);
 
-        int n = vD.size();  // Now we've got the number of columns!
+//        int n = vD.size();  // Now we've got the number of columns!
+        int n = vD.elementAt(1).intValue();
+        int m = vD.elementAt(0).intValue();
+
         double row[] = new double[n];
+
+        tokenizer.nextToken();
+        do {
+            vD.addElement(Double.valueOf(tokenizer.sval)); // Read & store 1st row.
+        } while (tokenizer.nextToken() == StreamTokenizer.TT_WORD);
+
         for (int j=0; j<n; j++)  // extract the elements of the 1st row.
             row[j]=vD.elementAt(j).doubleValue();
         java.util.Vector<double[]> v = new java.util.Vector<double[]>();
@@ -243,7 +252,7 @@ public class Matrix {
             if (j < n) throw new java.io.IOException
                     ("Row " + v.size() + " is too short.");
         }
-        int m = v.size();  // Now we've got the number of rows.
+//        int m = v.size();  // Now we've got the number of rows.
         double[][] A = new double[m][];
         v.copyInto(A);  // copy the rows out of the vector
         return new Matrix(A);
