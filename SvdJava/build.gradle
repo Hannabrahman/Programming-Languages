@@ -18,7 +18,7 @@ task fatJar(type: Jar) {
                 'Implementation-Version': version,
                 'Main-Class': 'svd.MatrixSVD'
     }
-    baseName = project.name + '-all'
+    baseName = project.name + '-full'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'

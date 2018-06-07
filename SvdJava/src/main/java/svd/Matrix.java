@@ -153,6 +153,10 @@ public class Matrix {
         return new SingularValueDecomposition(this);
     }
 
+    public FullSingularValueDecomposition fullsvd () {
+        return new FullSingularValueDecomposition(this);
+    }
+
     /** Print the matrix to stdout.
      * w: Column width.
      * d: Number of digits after the decimal.
