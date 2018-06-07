@@ -329,6 +329,7 @@ void SVD::ReadFile(const char* in_file){
   for (int i = 0; i < m; i++)
     for (int j = 0; j < n; j++)
       f >> A[i][j];
+  f.close();
   a = A;
   Vector<float> W(a.GetCols());
   Matrix<float> V(a.GetRows(),a.GetCols());
@@ -358,6 +359,7 @@ void SVD::WriteFile(const char* out_file){
      }
     f1 << "\n";
    };
+   f1.close();
 
    for (int i = 0; i < m; i++)
     {
@@ -366,11 +368,15 @@ void SVD::WriteFile(const char* out_file){
        f3 << a[i][j]<<" ";
       }
     f3 << "\n";
-    };
+  };
+    f3.close();
   int wSize = w.Size();
-  for (int k = 0; k < n; k++)
+  for (int k = 0; k < n; k++){
     f2 << w[k]<< " " ;
+  };
+    f2.close();
 }
+
 
 void SVD::Calc_svd (){
 	dsvd(a, a.GetRows(), a.GetCols(), w.GetRawData(), v);
