@@ -1,18 +1,3 @@
-// Copyright (C) 2009 foam
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 #include "Matrix.h"
 
@@ -36,24 +21,24 @@ void matrix_inverse(const float *Min, float *Mout, int actualsize) {
     int i, j, k;
     /* Sum variables */
     float sum,x;
-    
+
     /*  Copy the input matrix to output matrix */
     for(i=0; i<actualsize*actualsize; i++) { Mout[i]=Min[i]; }
-    
+
     /* Add small value to diagonal if diagonal is zero */
     for(i=0; i<actualsize; i++)
-    { 
+    {
         j=i*actualsize+i;
         if((Mout[j]<1e-12)&&(Mout[j]>-1e-12)){ Mout[j]=1e-12; }
     }
-    
+
     /* Matrix size must be larger than one */
     if (actualsize <= 1) return;
-    
+
     for (i=1; i < actualsize; i++) {
         Mout[i] /= Mout[0]; /* normalize row 0 */
     }
-    
+
     for (i=1; i < actualsize; i++)  {
         for (j=i; j < actualsize; j++)  { /* do a column of L */
             sum = 0.0;

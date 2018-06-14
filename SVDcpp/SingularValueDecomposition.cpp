@@ -2,7 +2,7 @@
 
 /* Reference: http://www.public.iastate.edu/~dicook/JSS/paper/paper.html
  * Modified by Faeze Brahman
- * Date: 05/27/2018
+ * Date: 05/26/2018
 
 
  * svdcomp - SVD decomposition routine.
@@ -202,12 +202,12 @@ int SVD::dsvd(Matrix<float> &a, int m, int n, float *w, Matrix<float> &v)
 
     /* diagonalize the bidiagonal form */
     for (k = n - 1; k >= 0; k--)
-    {                             /* loop over singular values */
+    {
         for (its = 0; its < 30; its++)
-        {                         /* loop over allowed iterations */
+        {
             flag = 1;
             for (l = k; l >= 0; l--)
-            {                     /* test for splitting */
+            {
                 nm = l - 1;
                 if (fabs(rv1[l]) + anorm == anorm)
                 {
@@ -259,7 +259,6 @@ int SVD::dsvd(Matrix<float> &a, int m, int n, float *w, Matrix<float> &v)
                 return(0);
             }
 
-            /* shift from bottom 2 x 2 minor */
             x = (double)w[l];
             nm = k - 1;
             y = (double)w[nm];
