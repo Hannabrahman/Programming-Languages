@@ -1,6 +1,6 @@
 
 
-/* Reference: http://www.public.iastate.edu/~dicook/JSS/paper/paper.html
+/* Reference: http://svn.lirec.eu/
  * Modified by Faeze Brahman
  * Date: 05/26/2018
 
