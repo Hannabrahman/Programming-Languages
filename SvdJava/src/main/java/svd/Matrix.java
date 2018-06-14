@@ -152,10 +152,7 @@ public class Matrix {
     public SingularValueDecomposition svd () {
         return new SingularValueDecomposition(this);
     }
-
-    public FullSingularValueDecomposition fullsvd () {
-        return new FullSingularValueDecomposition(this);
-    }
+    
 
     /** Print the matrix to stdout.
      * w: Column width.

@@ -19,8 +19,6 @@ public class MatrixSVD {
         File outUFile = new File(args[1] + "matrix_javasvd_u.output");
         File outVFile = new File(args[1] + "matrix_javasvd_v.output");
 
-        long readFileStartTime = System.currentTimeMillis();
-
         try {
 
             BufferedReader bufferReader = new BufferedReader(new FileReader(args[0]));
@@ -30,19 +28,13 @@ public class MatrixSVD {
 
 
             Matrix m = Matrix.read(bufferReader);
-            long readFileEndTime = System.currentTimeMillis();
-            System.out.println("Reading file in " + (readFileEndTime - readFileStartTime) + "ms");
 
-            long svdStartTime = System.currentTimeMillis();
             SingularValueDecomposition SVD = m.svd();
 
             Matrix S = SVD.getS();
             Matrix U = SVD.getU();
             Matrix V = SVD.getV();
-            long svdEndTime = System.currentTimeMillis();
-            System.out.println("Solving svd in " + (svdEndTime - svdStartTime) + "ms");
 
-            long saveFileStartTime = System.currentTimeMillis();
             S.print(outputS, 0, 1);
             U.print(outputU, 0, 1);
             V.print(outputV, 0, 1);
@@ -52,14 +44,9 @@ public class MatrixSVD {
             outputU.close();
             outputV.close();
             bufferReader.close();
-            long saveFileEndTime = System.currentTimeMillis();
-            System.out.println("Saving file in " + (saveFileEndTime - saveFileStartTime) + "ms");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        long programEndTime = System.currentTimeMillis();
-        System.out.println("Total time " + (programEndTime - readFileStartTime) + "ms");
-
     }
 }
