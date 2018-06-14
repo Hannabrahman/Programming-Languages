@@ -1,19 +1,3 @@
-// Copyright (C) 2009 foam
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-
 #include <assert.h>
 #include <math.h>
 #include <iostream>
@@ -37,8 +21,8 @@ public:
 	Vector(unsigned int s);
 	~Vector();
 	Vector(const Vector &other);
-	
-	T &operator[](unsigned int i) 
+
+	T &operator[](unsigned int i)
 	{
 		assert(i<m_Size);
 		return m_Data[i];
@@ -49,11 +33,11 @@ public:
 		assert(i<m_Size);
 		return m_Data[i];
 	}
- 
+
 	unsigned int Size() const { return m_Size; }
 	T *GetRawData() { return m_Data; }
 	const T *GetRawDataConst() const { return m_Data; }
-	 
+
 	void Print() const;
 	void SetAll(T s);
 	void Zero() { SetAll(0); }
@@ -77,12 +61,12 @@ public:
 	Vector &operator-=(T v);
 	Vector &operator*=(T v);
 	Vector &operator/=(T v);
-	
+
 	void Save(FILE *f) const;
 	void Load(FILE *f);
-	
+
 	static void RunTests();
-	
+
 private:
 
 	unsigned int m_Size;
@@ -124,11 +108,11 @@ Vector<T> &Vector<T>::operator=(const Vector &other)
 	{
 		delete[] m_Data;
 	}
-	
+
 	m_Size = other.m_Size;
 	m_Data=new T[m_Size];
 	memcpy(m_Data,other.m_Data,m_Size*sizeof(T));
-	
+
 	return *this;
 }
 
@@ -166,13 +150,13 @@ template<class T>
 T Vector<T>::DistanceFrom(const Vector &other) const
 {
 	assert(m_Size==other.m_Size);
-	
+
 	float acc=0;
 	for (unsigned int i=0; i<m_Size; i++)
 	{
 		acc+=(other[i]-(*this)[i]) * (other[i]-(*this)[i]);
 	}
-	
+
 	return sqrt(acc);
 }
 
@@ -184,7 +168,7 @@ T Vector<T>::Magnitude() const
 	{
 		acc+=(*this)[i] * (*this)[i];
 	}
-	
+
 	return sqrt(acc);
 }
 
@@ -212,7 +196,7 @@ template<class T>
 Vector<T> Vector<T>::operator+(const Vector &other) const
 {
 	assert(m_Size==other.m_Size);
-	
+
 	Vector<T> ret(m_Size);
 	for (unsigned int i=0; i<m_Size; i++)
 	{
@@ -236,7 +220,7 @@ Vector<T> Vector<T>::operator-(const Vector &other) const
 
 template<class T>
 Vector<T> Vector<T>::operator+(T v) const
-{	
+{
 	Vector<T> ret(m_Size);
 	for (unsigned int i=0; i<m_Size; i++)
 	{
@@ -258,7 +242,7 @@ Vector<T> Vector<T>::operator-(T v) const
 
 template<class T>
 Vector<T> Vector<T>::operator*(T v) const
-{	
+{
 	Vector<T> ret(m_Size);
 	for (unsigned int i=0; i<m_Size; i++)
 	{
@@ -269,7 +253,7 @@ Vector<T> Vector<T>::operator*(T v) const
 
 template<class T>
 Vector<T> Vector<T>::operator/(T v) const
-{	
+{
 	Vector<T> ret(m_Size);
 	for (unsigned int i=0; i<m_Size; i++)
 	{
@@ -354,7 +338,7 @@ T Vector<T>::Mean()
 template<class T>
 void Vector<T>::Save(FILE* f) const
 {
-	int version = 1;	
+	int version = 1;
 	fwrite(&version,sizeof(version),1,f);
 	fwrite(&m_Size,sizeof(m_Size),1,f);
 	fwrite(m_Data,sizeof(T)*m_Size,1,f);
@@ -363,11 +347,11 @@ void Vector<T>::Save(FILE* f) const
 template<class T>
 void Vector<T>::Load(FILE* f)
 {
-	int version;	
+	int version;
 	fread(&version,sizeof(version),1,f);
 	fread(&m_Size,sizeof(m_Size),1,f);
 	m_Data=new T[m_Size];
-	fread(m_Data,sizeof(T)*m_Size,1,f);	
+	fread(m_Data,sizeof(T)*m_Size,1,f);
 }
 
 template<class T>
@@ -380,7 +364,7 @@ void Vector<T>::RunTests()
 	assert(m[5]==0.5);
 	Vector<T> om(m);
 	assert(om[5]==0.5);
-	
+
 	assert(feq(m.Magnitude(),0.5f));
 	Vector<T> a(10);
 	a.Zero();
